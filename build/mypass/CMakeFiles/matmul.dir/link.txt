@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -Wl,-rpath-link,  -Wl,--gc-sections -shared  -o matmul.so CMakeFiles/matmul.dir/mypass.cpp.o  -Wl,-rpath,"\$ORIGIN/../lib:/home/ashutosh/llvm-project/build/./lib" 

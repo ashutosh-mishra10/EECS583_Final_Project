@@ -1,0 +1,15 @@
+digraph "CFG for 'fir' function" {
+	label="CFG for 'fir' function";
+
+	Node0x55864a1a92b0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#88abfd70",label="{%3:\l  %4 = alloca [65536 x float], align 16\l  %5 = bitcast [65536 x float]* %4 to i8*\l  call void @llvm.lifetime.start.p0i8(i64 262144, i8* nonnull %5) #4\l  call void @llvm.memset.p0i8.i64(i8* noundef nonnull align 16\l... dereferenceable(262144) %5, i8 0, i64 262144, i1 false), !tbaa !3\l  br label %6\l}"];
+	Node0x55864a1a92b0 -> Node0x55864a1aec00;
+	Node0x55864a1aec00 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f3c7b170",label="{%6:\l6:                                                \l  %7 = phi i64 [ 0, %3 ], [ %11, %10 ]\l  %8 = getelementptr inbounds float, float* %1, i64 %7\l  %9 = load float, float* %8, align 4, !tbaa !3\l  br label %15\l}"];
+	Node0x55864a1aec00 -> Node0x55864a1aecf0;
+	Node0x55864a1aec50 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f3c7b170",label="{%10:\l10:                                               \l  %11 = add nuw nsw i64 %7, 1\l  %12 = icmp eq i64 %11, 32\l  br i1 %12, label %13, label %6, !llvm.loop !7\l|{<s0>T|<s1>F}}"];
+	Node0x55864a1aec50:s0 -> Node0x55864a1aeca0;
+	Node0x55864a1aec50:s1 -> Node0x55864a1aec00;
+	Node0x55864a1aeca0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#88abfd70",label="{%13:\l13:                                               \l  %14 = bitcast float* %2 to i8*\l  call void @llvm.memcpy.p0i8.p0i8.i64(i8* noundef nonnull align 4\l... dereferenceable(262144) %14, i8* noundef nonnull align 16\l... dereferenceable(262144) %5, i64 262144, i1 false), !tbaa !3\l  call void @llvm.lifetime.end.p0i8(i64 262144, i8* nonnull %5) #4\l  ret void\l}"];
+	Node0x55864a1aecf0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%15:\l15:                                               \l  %16 = phi i64 [ 0, %6 ], [ %24, %15 ]\l  %17 = add nuw nsw i64 %16, %7\l  %18 = getelementptr inbounds float, float* %0, i64 %17\l  %19 = load float, float* %18, align 4, !tbaa !3\l  %20 = fmul float %9, %19\l  %21 = getelementptr inbounds [65536 x float], [65536 x float]* %4, i64 0,\l... i64 %16\l  %22 = load float, float* %21, align 4, !tbaa !3\l  %23 = fadd float %22, %20\l  store float %23, float* %21, align 4, !tbaa !3\l  %24 = add nuw nsw i64 %16, 1\l  %25 = icmp eq i64 %24, 65536\l  br i1 %25, label %10, label %15, !llvm.loop !10\l|{<s0>T|<s1>F}}"];
+	Node0x55864a1aecf0:s0 -> Node0x55864a1aec50;
+	Node0x55864a1aecf0:s1 -> Node0x55864a1aecf0;
+}

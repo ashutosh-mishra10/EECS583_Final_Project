@@ -1,0 +1,23 @@
+digraph "CFG for 'gemm3' function" {
+	label="CFG for 'gemm3' function";
+
+	Node0x55c489898920 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#7396f570",label="{%6:\l  %7 = bitcast float* %1 to i8*\l  %8 = alloca [64 x float], align 16\l  %9 = bitcast [64 x float]* %8 to i8*\l  br label %11\l}"];
+	Node0x55c489898920 -> Node0x55c4898989c0;
+	Node0x55c489898970 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#7396f570",label="{%10:\l10:                                               \l  ret void\l}"];
+	Node0x55c4898989c0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#cedaeb70",label="{%11:\l11:                                               \l  %12 = phi i64 [ 0, %6 ], [ %31, %30 ]\l  call void @llvm.lifetime.start.p0i8(i64 256, i8* nonnull %9) #4\l  call void @llvm.memcpy.p0i8.p0i8.i64(i8* noundef nonnull align 16\l... dereferenceable(256) %9, i8* noundef nonnull align 4 dereferenceable(256) %7,\l... i64 256, i1 false), !tbaa !3\l  br label %13\l}"];
+	Node0x55c4898989c0 -> Node0x55c489898a10;
+	Node0x55c489898a10 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f7a88970",label="{%13:\l13:                                               \l  %14 = phi i64 [ 0, %11 ], [ %18, %17 ]\l  %15 = getelementptr inbounds [12544 x float], [12544 x float]* %2, i64 %14,\l... i64 %12\l  %16 = load float, float* %15, align 4, !tbaa !3\l  br label %20\l}"];
+	Node0x55c489898a10 -> Node0x55c489898ab0;
+	Node0x55c489898a60 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f7a88970",label="{%17:\l17:                                               \l  %18 = add nuw nsw i64 %14, 1\l  %19 = icmp eq i64 %18, 32\l  br i1 %19, label %.preheader, label %13, !llvm.loop !7\l|{<s0>T|<s1>F}}"];
+	Node0x55c489898a60:s0 -> Node0x55c489898b50;
+	Node0x55c489898a60:s1 -> Node0x55c489898a10;
+	Node0x55c489898ab0 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%20:\l20:                                               \l  %21 = phi i64 [ 0, %13 ], [ %28, %20 ]\l  %22 = getelementptr inbounds [32 x float], [32 x float]* %0, i64 %21, i64 %14\l  %23 = load float, float* %22, align 4, !tbaa !3\l  %24 = fmul float %16, %23\l  %25 = getelementptr inbounds [64 x float], [64 x float]* %8, i64 0, i64 %21\l  %26 = load float, float* %25, align 4, !tbaa !3\l  %27 = fadd float %26, %24\l  store float %27, float* %25, align 4, !tbaa !3\l  %28 = add nuw nsw i64 %21, 1\l  %29 = icmp eq i64 %28, 64\l  br i1 %29, label %17, label %20, !llvm.loop !10\l|{<s0>T|<s1>F}}"];
+	Node0x55c489898ab0:s0 -> Node0x55c489898a60;
+	Node0x55c489898ab0:s1 -> Node0x55c489898ab0;
+	Node0x55c489898b00 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#cedaeb70",label="{%30:\l30:                                               \l  call void @llvm.lifetime.end.p0i8(i64 256, i8* nonnull %9) #4\l  %31 = add nuw nsw i64 %12, 1\l  %32 = icmp eq i64 %31, 12544\l  br i1 %32, label %10, label %11, !llvm.loop !11\l|{<s0>T|<s1>F}}"];
+	Node0x55c489898b00:s0 -> Node0x55c489898970;
+	Node0x55c489898b00:s1 -> Node0x55c4898989c0;
+	Node0x55c489898b50 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f7a88970",label="{.preheader:                                       \l  %33 = phi i64 [ %39, %.preheader ], [ 0, %17 ]\l  %34 = getelementptr inbounds [64 x float], [64 x float]* %8, i64 0, i64 %33\l  %35 = load float, float* %34, align 4, !tbaa !3\l  %36 = call float @max(float noundef %35, float noundef %4)\l  %37 = call float @min(float noundef %36, float noundef %5)\l  %38 = getelementptr inbounds [12544 x float], [12544 x float]* %3, i64 %33,\l... i64 %12\l  store float %37, float* %38, align 4, !tbaa !3\l  %39 = add nuw nsw i64 %33, 1\l  %40 = icmp eq i64 %39, 64\l  br i1 %40, label %30, label %.preheader, !llvm.loop !12\l|{<s0>T|<s1>F}}"];
+	Node0x55c489898b50:s0 -> Node0x55c489898b00;
+	Node0x55c489898b50:s1 -> Node0x55c489898b50;
+}
