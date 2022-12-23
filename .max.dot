@@ -1,5 +1,0 @@
-digraph "CFG for 'max' function" {
-	label="CFG for 'max' function";
-
-	Node0x5632b63a3460 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{%2:\l  %3 = fcmp ogt float %0, %1\l  %4 = select i1 %3, float %0, float %1\l  ret float %4\l}"];
-}
